@@ -53,7 +53,7 @@ lbl_title.pack(side=LEFT,padx=50)
 
 btn_quitter = Button(frm_btn,background='#DBD4CA', text="Quitter", command=win.quit)
 btn_quitter.pack(side=LEFT,padx=40)
-
+#display the grid and change the 0 to nothing
 def display():
     for line in range(len(game)):
         for col in range(len(game[line])):
