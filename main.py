@@ -1,5 +1,10 @@
-from gfx import *
+from gfx import *   # Importation du module gfx (contient probablement des fonctions graphiques
+                    # supplémentaires comme display() ou la configuration visuelle)
 
-#affiche le jeux
-display()
-win.mainloop()
+# affiche le jeu
+display()           # Appelle la fonction display() pour mettre à jour l’affichage
+                    # de la grille (affiche les valeurs et applique les couleurs)
+
+win.mainloop()      # Lance la boucle principale Tkinter
+                    # → permet à la fenêtre de rester ouverte
+                    # → attend les actions de l'utilisateur
