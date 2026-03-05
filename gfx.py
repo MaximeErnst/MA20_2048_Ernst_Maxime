@@ -43,8 +43,8 @@ lbl_title=Label(frm_btn,bg='#808080',text="2048", height=2,font=("Arial", 35,))
 lbl_title.pack(side=LEFT,padx=50)
 
 # Bouton pour quitter l'application
-btn_quitter = Button(frm_btn,background='#DBD4CA', text="Quitter", command=win.quit)
-btn_quitter.pack(side=LEFT,padx=40)
+btn_quit = Button(frm_btn,background='#DBD4CA', text="Quitter", command=win.quit)
+btn_quit.pack(side=LEFT,padx=40)
 
 # display the grid and change the 0 to nothing
 # Fonction qui met à jour l'affichage de la grille
@@ -80,26 +80,26 @@ for line in range(len(game)):
 def key_presssed(event):
     tot_move = 0
     # Récupère le nom de la touche pressée (ex: "Up", "Down", "a", "S", etc.)
-    touche = event.keysym
+    touch = event.keysym
 
     # Si la touche pressée est la flèche bas ou la touche S/s
     # alors on effectue un déplacement vers le bas
-    if touche == "Down" or touche == "s" or touche == "S":
+    if touch == "Down" or touch == "s" or touch == "S":
         down()
 
     # Si la touche pressée est la flèche haut ou la touche W/w
     # alors on effectue un déplacement vers le haut
-    if touche == "Up" or touche == "w" or touche == "W":
+    if touch == "Up" or touch == "w" or touch == "W":
         up()
 
     # Si la touche pressée est la flèche gauche ou la touche A/a
     # alors on effectue un déplacement vers la gauche
-    if touche == "Left" or touche == "a" or touche == "A":
+    if touch == "Left" or touch == "a" or touch == "A":
         left()
 
     # Si la touche pressée est la flèche droite ou la touche D/d
     # alors on effectue un déplacement vers la droite
-    if touche == "Right" or touche == "d" or touche == "D":
+    if touch == "Right" or touch == "d" or touch == "D":
         right()
 
     # Après chaque déplacement, on met à jour l'affichage du jeu
