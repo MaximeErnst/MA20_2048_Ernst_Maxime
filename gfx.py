@@ -5,22 +5,6 @@
 from tkinter import *        # Importation de Tkinter pour créer l'interface graphique
 from core import *           # Importation des éléments du fichier core (ex: couleurs)
 
-# 2 dimensions list with data
-"""
-# Exemple de grille vide ou partiellement remplie
-game= [[0, 0, 2,0],
-        [0,2, 0,0],
-        [0, 0, 0,0],
-        [0, 0, 0,0]]
-"""
-
-# Grille de jeu initialisée avec des valeurs
-game= [[2, 4, 8,16],
-        [32,64, 128,256],
-        [512, 1024, 2048,4096],
-        [8192,0,0,0]]
-
-
 # 2 dimensions list (empty, with labels in the future)
 # Matrice vide qui contiendra les Labels Tkinter correspondant aux cases
 labels=[[None,None,None,None],
@@ -91,3 +75,38 @@ for line in range(len(game)):
                                    bg=colors[game[line][col]])
         # Placement du Label dans la fenêtre avec pack()
         labels[line][col].pack (side=LEFT, padx=dx,pady=dy)
+
+# Fonction appelée à chaque fois qu'une touche du clavier est pressée
+def key_presssed(event):
+    tot_move = 0
+    # Récupère le nom de la touche pressée (ex: "Up", "Down", "a", "S", etc.)
+    touche = event.keysym
+
+    # Si la touche pressée est la flèche bas ou la touche S/s
+    # alors on effectue un déplacement vers le bas
+    if touche == "Down" or touche == "s" or touche == "S":
+        down()
+
+    # Si la touche pressée est la flèche haut ou la touche W/w
+    # alors on effectue un déplacement vers le haut
+    if touche == "Up" or touche == "w" or touche == "W":
+        up()
+
+    # Si la touche pressée est la flèche gauche ou la touche A/a
+    # alors on effectue un déplacement vers la gauche
+    if touche == "Left" or touche == "a" or touche == "A":
+        left()
+
+    # Si la touche pressée est la flèche droite ou la touche D/d
+    # alors on effectue un déplacement vers la droite
+    if touche == "Right" or touche == "d" or touche == "D":
+        right()
+
+    # Après chaque déplacement, on met à jour l'affichage du jeu
+    display()
+
+
+# Associe l'événement "appui sur une touche du clavier"
+# à la fonction key_presssed
+# Ainsi, chaque touche pressée déclenche cette fonction
+win.bind('<Key>', key_presssed)  # on traite les touches clavier
