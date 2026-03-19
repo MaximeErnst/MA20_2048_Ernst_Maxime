@@ -1,6 +1,7 @@
 # Test Ma20
 # 05.02.2026
 # dynamic creation of labels (pack)
+# (gfx) sert à gerer l'interface graphique du jeu 2048 avec Tkinter
 
 from tkinter import *        # Importation de Tkinter pour créer l'interface graphique
 from core import *           # Importation des éléments du fichier core (ex: couleurs)
@@ -16,8 +17,8 @@ random_choice = [2, 2, 2, 2, 4]
 
 
 
-dx=10 # horizontal distance between labels (espacement horizontal entre les cases)
-dy=10 # vertical distance between labels (espacement vertical entre les cases)
+dx=10 # horizontal
+dy=10 # vertical
 
 # Windows creation
 win = Tk()                           # Création de la fenêtre principale
@@ -130,11 +131,13 @@ def key_presssed(event):
         print("J'appelle block_spawn", tot_move)
         block_spawn()
     display()
-    end_of_the_game_win() #appelle la def
-    end_of_the_game_lose() #appelle la def
+    if end_of_the_game_win():
+        # affiche une fenêtre avec un message de victoire
+        messagebox.showinfo("gagner", "bravo d'avoir gagner les 2048")
 
-
-
+    if end_of_the_game_lose() :
+        # Si aucune case vide et aucune fusion possible
+        messagebox.showinfo("Perdu", "Plus de coups possibles !")
 
 # Associe l'événement "appui sur une touche du clavier"
 # à la fonction key_presssed

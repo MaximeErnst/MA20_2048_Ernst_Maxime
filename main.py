@@ -1,3 +1,5 @@
+# (main) Programme prinicpale qui lance le jeu 2048
+
 from gfx import *   # Importation du module gfx (contient probablement des fonctions graphiques
                     # supplémentaires comme display() ou la configuration visuelle)
 

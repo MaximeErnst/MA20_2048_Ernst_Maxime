@@ -1,6 +1,7 @@
 # Dictionnaire associant chaque valeur du jeu 2048 à une couleur spécifique
 # La clé correspond au nombre affiché dans la case
 # La valeur correspond au code couleur HEX utilisé pour le fond du label
+# (Core) contient la logique du jeu et les règles pour le faire fonctionner
 
 from random import *
 from tkinter import messagebox
@@ -133,9 +134,6 @@ def end_of_the_game_win(): # def pour fin de partie win
         for col in range(4):
             # si la case contient 2048 ET qu'on n'a pas encore gagné
             if game[line][col] == 2048 and winner == False:
-
-                # affiche une fenêtre avec un message de victoire
-                messagebox.showinfo("gagner", "bravo d'avoir gagner les 2048")
                 winner = True  # on note qu'on a gagné pour ne pas répéter le message
 
 def end_of_the_game_lose(): # def pour fin de partie lose
@@ -157,6 +155,4 @@ def end_of_the_game_lose(): # def pour fin de partie lose
             if game[line][col] == game[line + 1][col]:
                 return False  # fusion possible
 
-    # Si aucune case vide et aucune fusion possible
-    messagebox.showinfo("Perdu", "Plus de coups possibles !")
     return True  # partie perdue
