@@ -2,6 +2,8 @@ from gfx import *   # Importation du module gfx (contient probablement des fonct
                     # supplémentaires comme display() ou la configuration visuelle)
 
 # affiche le jeu
+block_spawn()
+block_spawn()
 display()           # Appelle la fonction display() pour mettre à jour l’affichage
                     # de la grille (affiche les valeurs et applique les couleurs)
 

@@ -4,7 +4,7 @@
 
 from tkinter import *        # Importation de Tkinter pour créer l'interface graphique
 from core import *           # Importation des éléments du fichier core (ex: couleurs)
-
+from random import *
 # 2 dimensions list (empty, with labels in the future)
 # Matrice vide qui contiendra les Labels Tkinter correspondant aux cases
 labels=[[None,None,None,None],
@@ -12,6 +12,7 @@ labels=[[None,None,None,None],
         [None,None,None,None],
         [None,None,None,None]]
 
+random_choice = [2, 2, 2, 2, 4]
 
 
 
@@ -76,7 +77,28 @@ for line in range(len(game)):
         # Placement du Label dans la fenêtre avec pack()
         labels[line][col].pack (side=LEFT, padx=dx,pady=dy)
 
-# Fonction appelée à chaque fois qu'une touche du clavier est pressée
+    # ajoute une tuile sur une case vide
+    def block_spawn():
+        global game
+
+        found = False  # indique si on a trouvé une case vide
+
+        # boucle jusqu'à trouver une case libre
+        while not found:
+            col_spawn = randint(0, 3)
+            line_spawn = randint(0, 3)
+
+            # vérifie si la case est vide
+            if game[line_spawn][col_spawn] == 0:
+                found = True  # on a trouvé une case libre
+
+        # place une nouvelle tuile
+        game[line_spawn][col_spawn] = choice(random_choice)
+
+        # affiche la position et la valeur ajoutée
+        print("J'ai mis", line_spawn, col_spawn, game[line_spawn][col_spawn])
+
+    # Fonction appelée à chaque fois qu'une touche du clavier est pressée
 def key_presssed(event):
     tot_move = 0
     # Récupère le nom de la touche pressée (ex: "Up", "Down", "a", "S", etc.)
@@ -85,25 +107,33 @@ def key_presssed(event):
     # Si la touche pressée est la flèche bas ou la touche S/s
     # alors on effectue un déplacement vers le bas
     if touch == "Down" or touch == "s" or touch == "S":
-        down()
+        tot_move = down()
 
     # Si la touche pressée est la flèche haut ou la touche W/w
     # alors on effectue un déplacement vers le haut
     if touch == "Up" or touch == "w" or touch == "W":
-        up()
+        tot_move = up()
 
     # Si la touche pressée est la flèche gauche ou la touche A/a
     # alors on effectue un déplacement vers la gauche
     if touch == "Left" or touch == "a" or touch == "A":
-        left()
+        tot_move = left()
 
     # Si la touche pressée est la flèche droite ou la touche D/d
     # alors on effectue un déplacement vers la droite
     if touch == "Right" or touch == "d" or touch == "D":
-        right()
+        tot_move = right()
 
     # Après chaque déplacement, on met à jour l'affichage du jeu
+
+    if tot_move > 0:
+        print("J'appelle block_spawn", tot_move)
+        block_spawn()
     display()
+    end_of_the_game_win() #appelle la def
+    end_of_the_game_lose() #appelle la def
+
+
 
 
 # Associe l'événement "appui sur une touche du clavier"
