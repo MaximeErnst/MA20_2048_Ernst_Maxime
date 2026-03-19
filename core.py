@@ -29,7 +29,7 @@ colors = {
 # Chaque nombre correspond à la valeur d'une case
 game = [[0, 0, 0, 0],
         [0, 0, 0, 0],
-        [0, 0, 0, 0],
+        [0, 0, 1024, 1024],
         [0, 0, 0, 0]]
 
 # Liste 2D vide qui contiendra les Labels Tkinter correspondant aux cases
@@ -127,7 +127,6 @@ def right():
         tot_move += nmove
     return tot_move
 
-
 def end_of_the_game_win(): # def pour fin de partie win
     global winner
     for line in range(4):
@@ -135,6 +134,7 @@ def end_of_the_game_win(): # def pour fin de partie win
             # si la case contient 2048 ET qu'on n'a pas encore gagné
             if game[line][col] == 2048 and winner == False:
                 winner = True  # on note qu'on a gagné pour ne pas répéter le message
+                return True
 
 def end_of_the_game_lose(): # def pour fin de partie lose
     # Vérifier s'il reste une case vide

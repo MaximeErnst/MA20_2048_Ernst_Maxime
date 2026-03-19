@@ -15,7 +15,7 @@ labels=[[None,None,None,None],
 
 random_choice = [2, 2, 2, 2, 4]
 
-
+winner = False
 
 dx=10 # horizontal
 dy=10 # vertical
@@ -133,7 +133,7 @@ def key_presssed(event):
     display()
     if end_of_the_game_win():
         # affiche une fenêtre avec un message de victoire
-        messagebox.showinfo("gagner", "bravo d'avoir gagner les 2048")
+        messagebox.showinfo("gagné", "bravo d'avoir gagné les 2048")
 
     if end_of_the_game_lose() :
         # Si aucune case vide et aucune fusion possible
